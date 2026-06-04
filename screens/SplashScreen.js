@@ -6,7 +6,7 @@ import PrimaryButtons from "../components/PrimaryButtons";
 
 function SplashScreen({ navigation }) {
     function handleGetstartedPressed() {
-        navigation.replace('Home')
+        navigation.replace('MainTabs')
     }
     return (
         <View style={styles.container}>

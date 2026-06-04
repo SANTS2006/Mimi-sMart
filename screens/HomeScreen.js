@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Categories from "../components/Categories";
 import ProductItem from "../components/ProductItem";
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
     const categories = [
         {
             id: 1,
@@ -35,33 +35,37 @@ function HomeScreen() {
     const products = [
         {
             id: 1,
-            image: require('../assets/images/Apple fruit.png'),
+            image: require('../assets/images/Grapes.png'),
             name: 'Grapes',
+            description: 'Sweet, fresh and juicy grapes, perfect for snacking or adding to your favorite recipes.',
             price: 50,
         },
         {
             id: 2,
-            image: require('../assets/images/Apple fruit.png'),
+            image: require('../assets/images/Mango.png'),
             name: 'Mango',
+            description: 'Sweet, fresh and juicy mangoes, perfect for snacking or adding to your favorite recipes.',
             price: 20,
         },
         {
             id: 3,
-            image: require('../assets/images/Apple fruit.png'),
+            image: require('../assets/images/Orange.png'),
             name: 'Orange',
+            description: 'Sweet, fresh and juicy oranges, perfect for snacking or adding to your favorite recipes.',
             price: 10,
         },
         {
             id: 4,
-            image: require('../assets/images/Apple fruit.png'),
+            image: require('../assets/images/Water.png'),
             name: 'Watermelon',
+            description: 'Sweet, fresh and juicy watermelons, perfect for snacking or adding to your favorite recipes.',
             price: 60,
-        }
+        },
     ]
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <ScrollView style={styles.scrollContent}>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
+            <ScrollView>
 
                 <View style={styles.welcomeMessage}>
                     <Text style={styles.welcomeMessageText}>Hello, Mujay</Text>
@@ -94,7 +98,7 @@ function HomeScreen() {
 
                     <View style={styles.productList}>
                         {products.map((product) => (
-                            <ProductItem key={product.id} image={product.image} name={product.name} price={product.price} />
+                            <ProductItem key={product.id} image={product.image} name={product.name} price={product.price} description={product.description} onPress={() => navigation.navigate('ProductDetails', { product })} />
                         ))}
                     </View>
                 </View>
@@ -109,10 +113,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: 'white'
-    },
-    scrollContent: {
-        paddingBottom: 120
     },
     welcomeMessage: {
         flexDirection: 'row',

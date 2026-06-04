@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text, Pressable, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-function ProductItem({ name, price, image }) {
+function ProductItem({ name, price, image, description, onPress }) {
     return (
         <View style={styles.productBox}>
-            <Pressable>
+            <Pressable onPress={onPress}>
                 <Image style={styles.productImage} source={image} />
                 <View style={styles.productInfo}>
                     <View>
