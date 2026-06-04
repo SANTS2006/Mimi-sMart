@@ -1,9 +1,13 @@
 import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
 import PrimaryButtons from "../components/PrimaryButtons";
 
-function SplashScreen() {
+function SplashScreen({ navigation }) {
+    function handleGetstartedPressed() {
+        navigation.replace('Home')
+    }
     return (
         <View style={styles.container}>
             <ImageBackground style={styles.container} resizeMode='cover' source={require('../assets/images/BackGround.png')}>
@@ -15,11 +19,10 @@ function SplashScreen() {
                         <Text style={styles.otherText}>to your doorstep</Text>
                     </View>
                     <View style={styles.getStartedButton}>
-                        <PrimaryButtons> <Ionicons name="cart" color="#ffd166" size={30} /> Get Started</PrimaryButtons>
+                        <PrimaryButtons onPress={handleGetstartedPressed}> <Ionicons name="cart" color="#ffd166" size={30} /> Get Started</PrimaryButtons>
                     </View>
                 </View>
             </ImageBackground>
-
         </View>
     )
 }

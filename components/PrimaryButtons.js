@@ -1,8 +1,8 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
-function PrimaryButtons({ children }) {
+function PrimaryButtons({ children, onPress }) {
     return (
         <View style={styles.buttonOuterContainer}>
-            <Pressable style={styles.buttonInnerContainer}>
+            <Pressable onPress={onPress} style={({ pressed }) => pressed ? [styles.buttonInnerContainer, styles.pressed] : styles.buttonInnerContainer}>
                 <Text style={styles.buttontext}>{children}</Text>
             </Pressable>
         </View>
@@ -27,5 +27,8 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontFamily: 'inter',
         fontWeight: 'bold'
+    },
+    pressed: {
+        opacity: 0.75
     }
 })
